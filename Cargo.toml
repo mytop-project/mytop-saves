@@ -6,7 +6,7 @@ members = ["crates/locate"]
 version = "0.3.0"
 edition = "2021"
 license = "GPL-3.0-only"
-repository = "https://github.com/Droidtop/lib-saves"
+repository = "https://github.com/mytop-project/mytop-saves"
 rust-version = "1.91"
 
 [workspace.dependencies]

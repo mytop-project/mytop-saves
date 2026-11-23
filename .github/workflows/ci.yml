@@ -1,10 +1,10 @@
 name: CI
 
-# lib-saves's own checks, then every program that uses it, built and tested against this commit
-# (Droidtop/tracker#867 D2: "each repo's CI builds and tests every app that uses it"). Work lands
+# mytop-saves's own checks, then every program that uses it, built and tested against this commit
+# (mytop-project/tracker#867 D2: "each repo's CI builds and tests every app that uses it"). Work lands
 # on main from ci/* branches once this is green.
 #
-# Programs that use lib-saves:
+# Programs that use mytop-saves:
 # - droidtop-agent: its workspace, built and tested on Linux.
 # - droidtop: through droidtop-agent's crates/android (libdroidtop_agent.so), built here for both
 #   Android ABIs the way droidtop-agent's CI builds it.
@@ -47,7 +47,7 @@ jobs:
         if: success() || failure()
         run: cargo test --workspace --no-fail-fast
 
-  # Pythia builds these crates with Ubuntu's rustc-1.91, as Launchpad does (Droidtop/tracker#867): the workspace is
+  # Pythia builds these crates with Ubuntu's rustc-1.91, as Launchpad does (mytop-project/tracker#867): the workspace is
   # checked with 1.85, resolving dependencies to versions 1.85 can build, as a consumer's lock would.
   msrv:
     runs-on: ubuntu-24.04
@@ -65,7 +65,7 @@ jobs:
           cargo generate-lockfile
           cargo check --workspace --all-targets
 
-  # The library's public interface stays compatible within a version (Droidtop/tracker#867, owner 2026-11-04: "I
+  # The library's public interface stays compatible within a version (mytop-project/tracker#867, owner 2026-11-04: "I
   # should be able to bump the version number and immediately get the benefit"). cargo-semver-checks compares this
   # commit with the last release: a breaking change fails unless the version says so (in 0.x, a new minor) and the
   # CHANGELOG says what broke.
@@ -88,7 +88,7 @@ jobs:
           echo "comparing with $last"
           cargo semver-checks check-release --workspace --baseline-rev "$last"
 
-  # droidtop-agent, built and tested with lib-saves taken from this commit (scripts/with-this-library.sh).
+  # droidtop-agent, built and tested with mytop-saves taken from this commit (scripts/with-this-library.sh).
   droidtop-agent:
     runs-on: ubuntu-24.04
     steps:
@@ -107,16 +107,16 @@ jobs:
           # is built with this one. While droidtop-agent's half of such a change has not landed,
           # .github/users-build-ref names its branch, so main and the release build against it.
           named="$(cat lib/.github/users-build-ref 2>/dev/null | tr -d '[:space:]' || true)"
-          if [[ "$BRANCH" == ci/* ]] && git ls-remote --exit-code --heads https://github.com/Droidtop/droidtop-agent "refs/heads/$BRANCH" >/dev/null; then
+          if [[ "$BRANCH" == ci/* ]] && git ls-remote --exit-code --heads https://github.com/mytop-project/droidtop-agent "refs/heads/$BRANCH" >/dev/null; then
             ref="$BRANCH"
-          elif [[ "$named" == ci/* ]] && git ls-remote --exit-code --heads https://github.com/Droidtop/droidtop-agent "refs/heads/$named" >/dev/null; then
+          elif [[ "$named" == ci/* ]] && git ls-remote --exit-code --heads https://github.com/mytop-project/droidtop-agent "refs/heads/$named" >/dev/null; then
             ref="$named"
           fi
           echo "droidtop-agent: $ref"
           echo "ref=$ref" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          repository: Droidtop/droidtop-agent
+          repository: mytop-project/droidtop-agent
           ref: ${{ steps.pair.outputs.ref }}
           path: agent
           persist-credentials: false
@@ -130,7 +130,7 @@ jobs:
       - name: Build and test droidtop-agent against this commit
         run: lib/scripts/with-this-library.sh agent test --workspace --no-fail-fast
 
-  # droidtop's native library (droidtop native/, libdroidtop_agent.so), built and tested with lib-saves taken from this
+  # droidtop's native library (droidtop native/, libdroidtop_agent.so), built and tested with mytop-saves taken from this
   # commit, on the runner and for both Android ABIs as droidtop's build-scripts/build-agent-lib.sh does.
   droidtop:
     runs-on: ubuntu-24.04
@@ -148,14 +148,14 @@ jobs:
           ref=main
           # A change that droidtop must follow is one change in two repositories: a ci/ branch of the same name there
           # is built with this one.
-          if [[ "$BRANCH" == ci/* ]] && git ls-remote --exit-code --heads https://github.com/Droidtop/droidtop "refs/heads/$BRANCH" >/dev/null; then
+          if [[ "$BRANCH" == ci/* ]] && git ls-remote --exit-code --heads https://github.com/mytop-project/droidtop "refs/heads/$BRANCH" >/dev/null; then
             ref="$BRANCH"
           fi
           echo "droidtop: $ref"
           echo "ref=$ref" >> "$GITHUB_OUTPUT"
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
-          repository: Droidtop/droidtop
+          repository: mytop-project/droidtop
           ref: ${{ steps.pair.outputs.ref }}
           path: droidtop
           sparse-checkout: native
@@ -186,7 +186,7 @@ jobs:
           ls -l droidtop/native/target/*-linux-android/release/libdroidtop_agent.so 2>/dev/null || true
 
   # A green main whose version has no tag yet is released: CI tags v<version> on this commit, and that tag
-  # is what programs and the other libraries pin (Droidtop/tracker#867 D2). To release, raise the version
+  # is what programs and the other libraries pin (mytop-project/tracker#867 D2). To release, raise the version
   # in the root Cargo.toml (and the CHANGELOG) in the change that needs it.
   release:
     if: github.event_name == 'push' && github.ref == 'refs/heads/main'

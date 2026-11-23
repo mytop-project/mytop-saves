@@ -1,5 +1,5 @@
 //! Where a game keeps its saves by its engine's own rule, without the
-//! Ludusavi manifest (Droidtop/tracker#538, the owner's Windows test): an
+//! Ludusavi manifest (mytop-project/tracker#538, the owner's Windows test): an
 //! engine that decides its save folder the same way for every game it runs
 //! is asked first, the way Enginehost knows each engine's own save logic
 //! (droidtop docs/SPEC.md, Enginehost "Saves").
