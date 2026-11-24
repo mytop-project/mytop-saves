@@ -3,6 +3,12 @@
 All notable changes to mytop-saves. Versions follow [Semantic Versioning](https://semver.org/)
 (in 0.x, only a new minor version may break the interface; CI's `semver` job enforces it).
 
+## [0.3.1]
+
+### Changed
+- The manifest names mytop-project and moves its pins to the renamed libraries (mytop-sync v0.2.2, mytop-games v0.4.1), so a
+  program that pins this tag finds one source for each library. Same code otherwise.
+
 ## [0.3.0]
 
 ### Changed
