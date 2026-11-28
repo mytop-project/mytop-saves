@@ -3,6 +3,12 @@
 All notable changes to mytop-saves. Versions follow [Semantic Versioning](https://semver.org/)
 (in 0.x, only a new minor version may break the interface; CI's `semver` job enforces it).
 
+## [0.3.2]
+
+### Changed
+- Use mytop-sync v0.2.3 and mytop-games v0.4.2 so saves, discovery and cancellable pairing share one set of core types.
+  Consumer CI resolves the coordinated released siblings together before testing older application pins.
+
 ## [0.3.1]
 
 ### Changed

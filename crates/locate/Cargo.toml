@@ -12,9 +12,9 @@ name = "droidtop_agent_saves"
 path = "src/lib.rs"
 
 [dependencies]
-droidtop-agent-core = { package = "sync-core", git = "https://github.com/mytop-project/mytop-sync", tag = "v0.2.2" }
-droidtop-agent-scan = { package = "games-scan", git = "https://github.com/mytop-project/mytop-games", tag = "v0.4.1" }
-droidtop-agent-store = { package = "sync-store", git = "https://github.com/mytop-project/mytop-sync", tag = "v0.2.2" }
+droidtop-agent-core = { package = "sync-core", git = "https://github.com/mytop-project/mytop-sync", tag = "v0.2.3" }
+droidtop-agent-scan = { package = "games-scan", git = "https://github.com/mytop-project/mytop-games", tag = "v0.4.2" }
+droidtop-agent-store = { package = "sync-store", git = "https://github.com/mytop-project/mytop-sync", tag = "v0.2.3" }
 serde.workspace = true
 serde_json.workspace = true
 # The Ludusavi manifest is YAML; it is read once when it is updated and kept
