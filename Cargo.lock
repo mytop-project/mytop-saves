@@ -866,8 +866,8 @@ dependencies = [
 
 [[package]]
 name = "games-scan"
-version = "0.4.2"
-source = "git+https://github.com/mytop-project/mytop-games?tag=v0.4.2#0eeca91843c1587c51c473a4aff9a8bd371d1818"
+version = "0.4.3"
+source = "git+https://github.com/mytop-project/mytop-games?tag=v0.4.3#f0039b2b629e7ed49a12b6aa223f800e51066fa5"
 dependencies = [
  "dirs",
  "engines-detect",
@@ -2034,7 +2034,7 @@ dependencies = [
 
 [[package]]
 name = "saves-locate"
-version = "0.3.2"
+version = "0.3.3"
 dependencies = [
  "dirs",
  "flate2",
@@ -2336,8 +2336,8 @@ dependencies = [
 
 [[package]]
 name = "sync-core"
-version = "0.2.3"
-source = "git+https://github.com/mytop-project/mytop-sync?tag=v0.2.3#0234775933faf02049acfe1eea4267bddb5ca2f1"
+version = "0.2.4"
+source = "git+https://github.com/mytop-project/mytop-sync?tag=v0.2.4#d01247dbc25046cdd2ad800660fa498e03be3709"
 dependencies = [
  "age",
  "boringtun",
@@ -2361,8 +2361,8 @@ dependencies = [
 
 [[package]]
 name = "sync-store"
-version = "0.2.3"
-source = "git+https://github.com/mytop-project/mytop-sync?tag=v0.2.3#0234775933faf02049acfe1eea4267bddb5ca2f1"
+version = "0.2.4"
+source = "git+https://github.com/mytop-project/mytop-sync?tag=v0.2.4#d01247dbc25046cdd2ad800660fa498e03be3709"
 dependencies = [
  "dirs",
  "gethostname",

@@ -3,6 +3,11 @@
 All notable changes to mytop-saves. Versions follow [Semantic Versioning](https://semver.org/)
 (in 0.x, only a new minor version may break the interface; CI's `semver` job enforces it).
 
+## [0.3.3]
+
+### Changed
+- Use mytop-sync v0.2.4 and mytop-games v0.4.3 so the agent family shares invitation-host cancellation and one set of core and scanner types.
+
 ## [0.3.2]
 
 ### Changed

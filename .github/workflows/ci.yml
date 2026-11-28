@@ -99,13 +99,13 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: mytop-project/mytop-sync
-          ref: v0.2.3
+          ref: v0.2.4
           path: sync
           persist-credentials: false
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: mytop-project/mytop-games
-          ref: v0.4.2
+          ref: v0.4.3
           path: games
           persist-credentials: false
       - name: The droidtop-agent branch this change goes with
@@ -154,13 +154,13 @@ jobs:
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: mytop-project/mytop-sync
-          ref: v0.2.3
+          ref: v0.2.4
           path: sync
           persist-credentials: false
       - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           repository: mytop-project/mytop-games
-          ref: v0.4.2
+          ref: v0.4.3
           path: games
           persist-credentials: false
       - name: The droidtop branch this change goes with
